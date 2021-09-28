@@ -132,8 +132,8 @@ class Game {
           //  rank += 1;
           //  Player.updateanimalsAtEnd(rank);
 
-          //  player.rank += 1;
-          //  Player.updateanimalsAtEnd(player.rank);
+           player.rank += 1;
+          Player.updateanimalsAtEnd(player.rank);
 
 
            player.update();
@@ -206,7 +206,7 @@ class Game {
   handleGrass(index) {
     animals[index - 1].overlap(grass, function(collector, collected) {
       //Uncomment the correct line of code out of these 4 to increment the score by 21 points
-      //player.score += 21;
+      player.score += 21;
       // score += 21;
       // player.score + 21;
       // player += 21;
