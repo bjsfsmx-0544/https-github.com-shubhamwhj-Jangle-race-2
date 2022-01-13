@@ -42,10 +42,10 @@ class Game {
     bush = new Group();
    grass = new Group();
 
-    // Adding fuel sprite in the game
+    // Agregar sprites de arbusto al juego
     this.addSprites(bush, 4, bushImage, 0.02);
 
-    // Adding coin sprite in the game
+    // Agregar sprites de pasto al juego
     this.addSprites(grass, 18, grassImage, 0.09);
   }
 
@@ -70,7 +70,7 @@ class Game {
     form.titleImg.position(40, 50);
     form.titleImg.class("gameTitleAfterEffect");
     
-    this.leadeboardTitle.html("Leaderboard");
+    this.leadeboardTitle.html("Tablero de líderes");
     this.leadeboardTitle.class("resetText");
     this.leadeboardTitle.position(width / 3 - 60, 40);
 
@@ -92,13 +92,13 @@ class Game {
       image(track, 0, -height * 5, width, height * 6);
       this.showLeaderboard();
 
-      //index of the array
+      // Índice del arreglo
       var index = 0;
       for (var plr in allPlayers) {
-        //add 1 to the index for every loop
+        // Agrega 1 al indice por cada ciclo
         index = index + 1;
 
-        //use data form the database to display the cars in x and y direction
+        // Usa datos de la base de datos para mostrar a los autos en la dirección x y y
         var x = allPlayers[plr].positionX;
         var y = height - allPlayers[plr].positionY;
 
@@ -115,7 +115,7 @@ class Game {
           this.handleGrass(index);
     camera.position.x =    animals[index - 1].position.x;
           camera.position.y =    animals[index - 1].position.y;
-          // Changing camera position in y direction
+          // Cambiando la posición en la dirección y
          }}
       
       
@@ -124,7 +124,7 @@ class Game {
          if (player.positionY > finshLine) {
            gameState = 2;
            this.update(gameState);
-           // uncomment correct one out of these to increment the rank of a player by 1 and update it to the database.
+           // Descomenta uno de estos para incrementar la posición del jugador en 1 y actualizarlo en la base de datos
            
           //  player.rank += 1;
           //  player.updateanimalsAtEnd(player.rank);
@@ -132,12 +132,12 @@ class Game {
           //  rank += 1;
           //  Player.updateanimalsAtEnd(rank);
 
-           player.rank += 1;
+          player.rank += 1;
           Player.updateanimalsAtEnd(player.rank);
 
 
-           player.update();
-           //this.showRank();
+          player.update();
+          //this.showRank();
          } 
          if (keyIsDown(UP_ARROW)) {
           player.positionY += 10;
@@ -153,7 +153,7 @@ class Game {
       (players[0].rank === 0 && players[1].rank === 0) ||
       players[0].rank === 1
     ) {
-      // &emsp;    This tag is used for displaying four spaces.
+      // &emsp;    Esta etiqueta se usa para mostrar 4 espacios
       leader1 =
         players[0].rank +
         "&emsp;" +
@@ -189,23 +189,23 @@ class Game {
     this.leader2.html(leader2);
   }
 
-      // handling keyboard events
+      // Manipular los eventos del teclado
       
 
 
   handleBush(index) {
-    // Adding fuel
+    // Agregar arbustos
     animals[index - 1].overlap(bush, function(collector, collected) {
       player.bush = 185;
-      //collected is the sprite in the group collectibles that triggered
-      //the event
+      // "collected" es el sprite en el grupo de coleccionables que detonan
+      // el evento
       collected.remove();
     });
   }
 
   handleGrass(index) {
     animals[index - 1].overlap(grass, function(collector, collected) {
-      //Uncomment the correct line of code out of these 4 to increment the score by 21 points
+      // Descomenta la línea de código correcta de estas 4 para aumentar la puntuación en 21 puntos
       player.score += 21;
       // score += 21;
       // player.score + 21;
